@@ -1,0 +1,101 @@
+JEUS 8.5 Fix#0 용 통합패치 입니다.
+
+
+
+통합 패치 파일의 변경 내역은 변경사항 메뉴에서 확인하시면 됩니다.
+
+1. 통합 패치 파일 정보 위치 정보
+
+구분
+
+패치 파일이름
+
+파일경로
+
+엔진
+
+patch_v8500_릴리즈일자_unified.zip
+
+$JEUS_HOME/lib/jext/
+
+$JEUS_HOME/lib/jlext/
+
+$JEUS_HOME/lib/jnext/
+
+
+
+
+
+관리Tool
+
+webadmin.war
+
+$JEUS_HOME/lib/systemapps/
+
+
+
+
+
+
+
+
+
+2. 통합패치 파일 적용 방법
+
+패치 적용 시 기존 패치 파일은 반드시 백업 후 첨부된 패치파일로 대체하시기 바랍니다.
+ * 엔진 패치의 경우 기존에 $JEUS_HOME/lib 에 반영되어 있던 패치를 모두 제거(백업)하시고 첨부된 통합패치로 교체하시면 됩니다.(엔진 패치는 jext, jlext, jnext 폴더로 구분되어 설치 됩니다.)
+패치 파일 적용 후에는 JEUS 재기동 및 서비스 점검을 진행하시기 바랍니다.
+OS 특성에 따라서 패치 파일 적용을 위해서 JEUS 종료 후 작업이 필요 할 수 있습니다.
+
+
+3. 통합패치 파일 원복 작업
+
+패치 적용 후 JEUS 기동시 아래와 같은 로그가 출력되거나 시스템에 문제가 발생하는 경우 패치파일 원복 작업이 필요 할 수 있습니다.
+
+[/home/user/jeus8_5/lib/jext]# startDomainAdminServer -u administrator -p XXXXXXXX 
+
+=================== PATCH INFORMATION ===================
+
+PATCHES :
+
+jext/jext_v8500_i274643_a1703682.jar
+
+   - when datasource's user and password are both dynamically change error appear
+
+jext/jext_v8500_202201_unified.jar
+
+   - [ims-274148] modify-session-configuration command is not working for sticky encoding rule.
+
+   - [ims-274643] when datasource's user and password are both dynamically change error appear.
+
+WARNINGS :
+
+jeus/jdbc/connectionpool/ConnectionPoolImpl.class overlapped, check following files :
+
+   - jext/jext_v8500_i274643_a1703682.jar(loaded)
+
+   - jext/jext_v8500_202201_unified.jar
+
+=========================================================
+
+WARNING:
+
+ - Patch contents overlapped. Check the patch files.
+
+Force booting property:
+   -Djeus.boot.ignorepatchoverlap=false
+Action:
+   - The process can not be booted.
+   - If you want to force a boot, modify the value of property '-Djeus.boot.ignorepatchoverlap' to 'true'.
+신규 패치 파일 제거 후 백업하였던 패치 파일 적용 후 콜센터(1544-8629) 혹은 담당엔지니어에 문의 하시기 바랍니다.
+
+
+
+========================================
+ 통합패치 패치 시 적용 할 파일 목록
+
+      JEUS 8.5 Fix#0 통합패치(patch_v8500_<yyyymm>_unified.zip)
+
+      JEUS 8.5 Fix#0 통합패치(webadmin.war)
+
+  ==========================================  
